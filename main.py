@@ -43,18 +43,18 @@ def main():
         return
     
     # Получите размер базового изображения
-    base_width, base_height = image.size
+    base_width, base_height = frame.size
 
     # Измените размер изображения наложения
-    overlay_img_resized = frame.resize((base_width, base_height))
+    image = image.resize((base_width, base_height))
 
     # Определите позицию для наложения
     position = (0, 0)
 
-    image.paste(overlay_img_resized, position, overlay_img_resized)
+    image.paste(frame, position, frame)
     
     image.save('result.png')
-    print(f"Изображение с рамкой сохранено: {'result.png'}")
+    print(f"Изображение с рамкой сохранено: {'result.png'}, {image.size}")
 
 
 if __name__ == "__main__":
