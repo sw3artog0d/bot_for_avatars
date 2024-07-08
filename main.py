@@ -1,6 +1,5 @@
 from PIL import Image
 
-
 def load_image(image_path):
     try:
         return Image.open(image_path)
@@ -39,19 +38,23 @@ def main():
     # Получение пути к выбранной рамке
     frame_path = available_frames[frame_choice - 1]
 
-    frame = load_image(frame_path)
+    frame = load_image(frame_path).convert('RGBA')
     if frame is None:
         return
+    
+    # Получите размер базового изображения
+    base_width, base_height = image.size
 
-    # Вычисляем координаты для вставки изображения в рамку
-    x_offset = (frame.width - image.width) // 2
-    y_offset = (frame.height - image.height) // 2
+    # Измените размер изображения наложения
+    overlay_img_resized = frame.resize((base_width, base_height))
 
-    frame.paste(image, (x_offset, y_offset))
+    # Определите позицию для наложения
+    position = (0, 0)
 
-    result_path = "result.png"
-    frame.save(result_path)
-    print(f"Изображение с рамкой сохранено: {result_path}")
+    image.paste(overlay_img_resized, position, overlay_img_resized)
+    
+    image.save('result.png')
+    print(f"Изображение с рамкой сохранено: {'result.png'}")
 
 
 if __name__ == "__main__":
