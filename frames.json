@@ -1,0 +1,14 @@
+{
+    "available_frames": [
+        {
+            "frame_name": "БЕЛАЯ 25 лет СКС Профсоюза",
+            "path": "./images/white_frame.png"
+        },
+        {
+            "frame_name": "ЗЕЛЕНАЯ 25 лет СКС Профсоюза",
+            "path": "./images/green_frame.png"
+        }
+    ]
+        
+    
+}
